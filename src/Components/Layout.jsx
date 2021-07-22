@@ -12,7 +12,9 @@ const Layout = () => {
                 <div>
                     <Header {...props} />
                     <div className="main">
-                        <Routers />
+                        <div className="container">
+                         <Routers />
+                        </div>
                     </div>
                     <Footer />
                 </div>
