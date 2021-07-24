@@ -1,18 +1,32 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect,useCallback} from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 const HeroSlider = props => {
     const data = props.data
     const [activeSlide, setactiveSlide] = useState(0)
-    const nextslider = ()=>{
-        const index  = activeSlide +1 == data.length ? 0 : activeSlide +1
+    const timeOut = props.timeout ? props.timeout :3000
+    const nextslider = useCallback(()=>{
+        const index  = (activeSlide +1 === data.length) ? 0 : activeSlide +1
         setactiveSlide(index)
-    }
+    },[activeSlide,data])
+    
     const prevslider = ()=>{
         const index  = activeSlide -1 < 0 ? data.length -1 : activeSlide -1
         setactiveSlide(index)
     }
+   useEffect(() => {
+       if (props.auto) {
+           const slideAuto = setInterval(()=>{
+               nextslider()
+           },timeOut)
+           return () => {
+            clearInterval(slideAuto)
+        }
+       }
+       
+   }, [activeSlide])
+
 
     return (
         <div className='hero-slider'>
@@ -26,7 +40,7 @@ const HeroSlider = props => {
                     </div>
                     <div className="hero-slider__control__item">
                         <div className="index">
-                            {activeSlide + 1 }/{data.length}
+                           <p>{activeSlide + 1 }/{data.length}</p> 
                         </div>
                     </div>
                     <div className="hero-slider__control__item" onClick ={nextslider}>
@@ -41,7 +55,9 @@ const HeroSlider = props => {
 
 HeroSlider.propTypes = {
     data: PropTypes.array.isRequired,
-    control: PropTypes.bool
+    control: PropTypes.bool, 
+    auto:PropTypes.bool,
+    timeout:PropTypes.number
 
 }
 const HeroSliderItem = props => {
