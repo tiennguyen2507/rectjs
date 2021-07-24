@@ -25,7 +25,7 @@ const HeroSlider = props => {
         }
        }
        
-   }, [activeSlide])
+   }, [activeSlide,nextslider,props.auto,timeOut])
 
 
     return (
@@ -40,7 +40,7 @@ const HeroSlider = props => {
                     </div>
                     <div className="hero-slider__control__item">
                         <div className="index">
-                           <p>{activeSlide + 1 }/{data.length}</p> 
+                      {activeSlide + 1 }/{data.length}
                         </div>
                     </div>
                     <div className="hero-slider__control__item" onClick ={nextslider}>
@@ -73,7 +73,7 @@ const HeroSliderItem = props => {
                 <div className="hero-slider__item__info__btn">
                     <Link to={props.item.path}>
                         <button>
-                            Xem chi tiết
+                           <p>Xem chi tiết</p> 
                         </button>
                     </Link>
                 </div>

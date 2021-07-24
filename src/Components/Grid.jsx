@@ -6,8 +6,8 @@ const Grid = props => {
         gap:props.gap ? `${props.gap}px`:'0'
     }
     const col =props.col ? `grid-col-${props.col}` : ""
-    const mdCol =props.mdCol ? `grid-col-${props.mdCol}` : ""
-    const smcol =props.smcol ? `grid-col-${props.smcol}` : ""
+    const mdCol =props.mdCol ? `grid-col-md${props.mdCol}` : ""
+    const smcol =props.smcol ? `grid-col-sm${props.smcol}` : ""
 
 
     return (

@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <Helmet title={'trang chủ'}>
             {/* start {hero Slider} */}
-            <HeroSlider data={heroSliderData} control={true} auto={false} timeout={5000} />
+            <HeroSlider data={heroSliderData} control={true} auto={true} timeout={5000} />
             {/* end {hero Slider} */}
         </Helmet>
     )
