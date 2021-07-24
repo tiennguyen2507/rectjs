@@ -67,16 +67,17 @@ a{
     }
 
 }
-.main{
-    margin-top: $header-height;
+.main{  
+    margin-top: $header-height+10px;
     margin-bottom: 2em;
     min-height: 100vh;
-    @include tablet {
-        margin-top: calc(#{$header-tablet-height}+20px);
-    }
     @include mobile {
         margin-top: calc(#{$header-mobile-height}+10px);
     }
+    @include tablet {
+        margin-top: calc(#{$header-tablet-height}+10px);
+    }
+    
     
 }
 .grid{

@@ -1,0 +1,120 @@
+.hero-slider{
+    height: 100%;
+    max-height: 1080px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: calc($header-height*-1);
+    
+    @include tablet {
+        margin-top: calc($header-tablet-height*-1);
+    }  
+    @include mobile {
+        margin-top: calc($header-mobile-height*-1);
+    }  
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        opacity: 0px;
+        visibility: hidden;
+        pointer-events: none;
+        position: relative;
+        inset:0;
+        &.active{
+            visibility: visible;
+            pointer-events: visible;
+        }
+        &__info{
+            width: 58.33%;
+
+            &__title,&__description{
+                margin-bottom: 60px;
+                @include tablet{
+                    margin-bottom: 15px;
+                }
+            } 
+            &__title{
+                font-family: 'M PLUS Rounded 1c',sans-serif;
+                font-weight: 600;
+                font-size: 4.5rem;
+                line-height: 6.75rem;
+                overflow: hidden;
+            }
+            &__description{
+                color: $text-second-color;
+                font-size: 1.5rem;
+                line-height:2.5rem;
+                overflow: hidden;
+            }
+            &__btn{
+                overflow: hidden;
+            }
+        }
+    
+        &__image{
+            flex-grow: 1;
+            // position: relative;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+            img{
+                height: 100vh;
+            }
+            .shape{
+                $size:472px;
+                height: $size;
+                width: $size;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% ;
+                transform: translate(0,-50%);
+                transition: border-radius 13s ease;
+                z-index: -1;
+                animation: bodder  5s infinite;
+
+
+            }
+            @keyframes bodder {
+                0%{
+                    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                }
+                50%{
+                    border-radius: 25% 50% 59% 41% / 25% 24% 78% 79%;
+                }
+                100%{
+                    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                }
+            }
+
+         }
+        
+    }
+    &__control{
+        @include flex(center,center);
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translate(-50%);
+        &__item~ &__item{
+            margin-left: 10px;
+
+        }
+        &__item{
+            @include flex(center,center);
+            font-size: 2rem;
+            cursor: pointer;
+            &:hover{
+                color: $main-color;
+
+            }
+            &.index{
+                font-size: 1.5rem;
+            }
+
+        }
+    }
+    
+    
+}
